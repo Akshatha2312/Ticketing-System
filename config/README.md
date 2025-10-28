@@ -2,24 +2,42 @@
 
 ## Setup Instructions
 
+### Option 1: Using Environment Variables (Recommended - Secure)
+
+1. **Copy the `.env.example` file to `.env`:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env` with your actual database credentials:**
+   ```bash
+   DB_HOST=your-database-host.aivencloud.com
+   DB_PORT=11898
+   DB_NAME=defaultdb
+   DB_USER=your-username
+   DB_PASS=your-password
+   ```
+
+3. **Start the server (environment variables are loaded automatically):**
+   ```bash
+   ./start-server.sh
+   ```
+
+### Option 2: Using db.php Template (Legacy)
+
 1. **Copy the template file:**
    ```bash
    cp config/db.php.example config/db.php
    ```
 
-2. **Edit `config/db.php` with your actual database credentials:**
-   - Get your credentials from your cloud database provider (Aiven, AWS RDS, etc.)
-   - Update the following values:
-     - `$host` - Your database host
-     - `$username` - Your database username
-     - `$password` - Your database password
-     - `$dbname` - Your database name (usually 'defaultdb')
-     - `$port` - Your database port (usually 11898 for Aiven)
+2. **Edit `config/db.php` with your actual database credentials**
 
-3. **Import the database schema:**
-   ```bash
-   mysql -h YOUR_HOST -P YOUR_PORT -u YOUR_USERNAME -p'YOUR_PASSWORD' --ssl-mode=REQUIRED YOUR_DATABASE < config/cloud_db_setup.sql
-   ```
+## Current Implementation
+
+The application now uses **environment variables** for database configuration:
+- Database credentials are loaded from `.env` file
+- The `.env` file is ignored by Git (secure)
+- `config/db.php` reads from environment variables
 
 ## Security Notes
 

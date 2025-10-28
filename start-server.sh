@@ -49,6 +49,20 @@ echo ""
 # Navigate to the script directory
 cd "$(dirname "$0")"
 
+# Load environment variables
+echo "Loading environment variables..."
+php load-env.php
+if [ $? -ne 0 ]; then
+    echo "Failed to load environment variables. Exiting."
+    exit 1
+fi
+echo ""
+
+# Export environment variables for PHP server
+if [ -f .env ]; then
+    export $(cat .env | grep -v '^#' | xargs)
+fi
+
 echo "=========================================="
 echo "   Starting PHP Development Server"
 echo "=========================================="
