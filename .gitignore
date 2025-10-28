@@ -1,0 +1,19 @@
+# Database configuration with credentials
+config/db.php
+
+# Documentation with credentials
+DATABASE_FIX.md
+INTEGRATION_SUMMARY.md
+QUICKSTART.md
+SETUP_GUIDE.md
+
+# Environment files
+.env
+*.env
+
+# Sensitive data
+config/cloud_db_setup.sql
+rough.text
+
+# Result files
+Result_Publish*.csv
